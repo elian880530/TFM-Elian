@@ -43,7 +43,12 @@ def main():
 
                 # Lo guardo en la dirección que se desea con formato png
                 #cv2.imwrite(args.directory + "/Casa-Pla-Parado/Parado-" + str(i + 6) + ".png", colorized_depth)
-                cv2.imwrite(args.directory + "/Casa-Sa-Pobla-CaidasReales/CaidasReales-" + str(i + 5000) + ".png", colorized_depth)
+                #cv2.imwrite(args.directory + "/Casa-Sa-Pobla-CaidasReales/CaidasReales-" + str(i + 5000) + ".png", colorized_depth)
+                #cv2.imwrite(args.directory + "/Casa-Sa-Pobla-Agachado-Agachado/Agachado-" + str(i) + ".png", colorized_depth)
+                #cv2.imwrite(args.directory + "/Casa-Sa-Pobla-Agachado-CaidaTipoFin/CaidaTipoFin-" + str(i+25000) + ".png", colorized_depth)
+                #cv2.imwrite(args.directory + "/Casa-Sa-Pobla-Parado-Agachado/Agachado--" + str(i+50000) + ".png", colorized_depth)
+                #cv2.imwrite(args.directory + "/Casa-Sa-Pobla-Parado-CaidaTipoFin/CaidaTipoFin--" + str(i+75000) + ".png", colorized_depth)
+                cv2.imwrite(args.directory + "/Casa-Sa-Pobla-Parado-Parado/Parado--" + str(i+100000) + ".png", colorized_depth)
 
                 # Continúo con el proceso de iteración
                 i += 1
@@ -67,7 +72,8 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--input", type=str, help="Bag file to read")
 
     # Se inicializan los argumentos directory e input con los valores deseados
-    args = parser.parse_args(["--directory","C:/Users/EGH/PycharmProjects/Ouch","--input","20200714_123831.bag"])
+    args = parser.parse_args(["--directory","C:/Users/EGH/PycharmProjects/Ouch","--input","20200716_151407.bag"])
+
 
     # Llamada al método main
     main()

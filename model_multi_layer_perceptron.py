@@ -156,6 +156,7 @@ print(y_test)
 #----------------------------------------------------------------------------------------------------------------------
 
 #Construyendo el clasificador MLPClassifier
+#Pruebas con 400 imagenes
 
 #82.5% accuracy
 #clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
@@ -187,7 +188,35 @@ print(y_test)
 #73% accuracy
 #clf = MLPClassifier(hidden_layer_sizes=(250,200,150,150,200,250), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
-#% accuracy
+
+
+#----------------------------------------------------------------------------------------------------------------------
+
+#Construyendo el clasificador MLPClassifier
+#Pruebas con 20000 imagenes
+
+#74% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#48% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(10,20,30), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#71.5% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(500,500,500), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#72% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(25,50,100,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#67.5% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(25,50,100,150,200,250), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#69.5% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(250,200,150,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#73% accuracy
+#clf = MLPClassifier(hidden_layer_sizes=(250,200,150,150,200,250), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+#79% accuracy
 clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=1000, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #Entrenando el modelo

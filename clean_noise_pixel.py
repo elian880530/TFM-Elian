@@ -45,7 +45,37 @@ print(media_mas_desviacion)
 #DIR_imagen = './Casa-Sa-Pobla-Agachado-Noise'
 #DIR_imagen = './Casa-Sa-Pobla-CaidaTipoFin-Noise'
 #DIR_imagen = './Casa-Sa-Pobla-Parado-Noise'
-DIR_imagen = './Casa-Sa-Pobla-Vacio-Noise'
+#DIR_imagen = './Casa-Sa-Pobla-Vacio-Noise'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/1_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/2_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/3_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/4_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/5_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/6_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/7_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/8_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/9_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/10_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/11_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/12_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/13_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/14_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/15_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/16_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/17_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/18_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/19_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/20_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/21_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/22_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/23_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/24_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/25_Caida'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Parado-Parado'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Parado-CaidaTipoFin'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Parado-Agachado'
+#DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Agachado-CaidaTipoFin'
+DIR_imagen = 'G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Agachado-Agachado'
 
 #Rutina que permite convertir todas las imagenes en array
 def load_pixel_array():
@@ -108,8 +138,11 @@ for p in range(len(array_pixel_limpio)):
     #print("Entrando al bucle")
     #print("Imprimiendo listado de pixel")
     #print(pixels[0:300])
+
     # Convert the pixels into an array using numpy
-    array = np.array(pixels, dtype=np.uint8).reshape(270,480)
+    #array = np.array(pixels, dtype=np.uint8).reshape(270,480)
+    array = np.array(pixels, dtype=np.uint8).reshape(270,300)
+
     # Use PIL to create an image from the new array of pixels
     new_image = Image.fromarray(array, 'L')
 
@@ -138,6 +171,41 @@ for p in range(len(array_pixel_limpio)):
     #new_image.save('./Casa-Sa-Pobla-Vacio-Clean/Vacio-00' + str(p) + '.png')
     #new_image.save('./Casa-Sa-Pobla-Vacio-Clean/Vacio-000' + str(p) + '.png')
     #new_image.save('./Casa-Sa-Pobla-Vacio-Clean/Vacio-0000' + str(p) + '.png')
-    new_image.save('./Casa-Sa-Pobla-Vacio-Clean/Vacio-00000' + str(p) + '.png')
+    #new_image.save('./Casa-Sa-Pobla-Vacio-Clean/Vacio-00000' + str(p) + '.png')
+
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/1_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/2_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/3_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/4_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/5_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/6_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/7_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/8_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/9_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/10_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/11_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/12_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/13_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/14_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/15_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/16_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/17_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/18_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/19_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/20_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/21_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/22_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/23_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/24_Caida_Clean/new-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-CaidasReales/25_Caida_Clean/new-' + str(p) + '.png')
+
+
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Parado-Parado-Clean/Parado-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Parado-CaidaTipoFin-Clean/CaidaTipoFin-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Parado-Agachado-Clean/Agachado-' + str(p) + '.png')
+    #new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Agachado-CaidaTipoFin-Clean/CaidaTipoFin-' + str(p+25000) + '.png')
+    new_image.save('G:/doc tesis/cod proyecto/Ouch/BD Imagenes and Videos/Casa-Sa-Pobla-Agachado-Agachado-Clean/Agachado-' + str(p+25000) + '.png')
+
+
 
 

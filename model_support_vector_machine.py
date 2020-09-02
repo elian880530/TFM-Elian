@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
-import pandas as pd
+
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -200,147 +200,8 @@ plt.show()
 
 import pickle
 
-#En la siguiente línea configuro la carpeta y el nombre de como se guardara el modelo de las primeras 100 Epoch
+#En la siguiente línea configuro la carpeta y el nombre de como se guardara el modelo
 MODEL_DIR = './modelos/model-SVM'
 
 #En la siguiente linea guardamos el primer modelo
 pickle.dump(clf, open(MODEL_DIR, 'wb'))
-
-
-#----------------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------------------------------
-
-'''
-
-#Probando el tracking de un video de caida
-
-DIR = './Tracking-Caida'
-
-def label_img_tracking(name):
-
-    #A continuacion describo los diferentes valores que tendrá que identificar el modelo
-    #tomando el valor que se encuentre antes del - como la palabra que debe identificar
-    word_label = name.split('-')[1]
-    #print(word_label)
-
-    # 0- Declaro la clase Vacio
-    if word_label == 'Vacio'  :
-        print(word_label)
-        return np.array([1, 0, 0, 0])
-
-    # 1- Declaro la clase Parado
-    if word_label == 'Parado' :
-        print(word_label)
-        return np.array([0, 1, 0, 0])
-
-    # 2- Declaro la clase Agachado
-    if word_label == 'Agachado':
-        print(word_label)
-        return np.array([0, 0, 1, 0])
-
-    # 3- Declaro la clase CaidaTipoFin
-    elif word_label == 'CaidaTipoFin':
-        print(word_label)
-        return np.array([0, 0, 0, 1])
-
-
-#Algoritmo de prueba para ver en que orden esta leyendo las imagenes
-def label_img_tracking_split_numero(name):
-    word_label = name.split('-')[0]
-    return word_label
-
-# Cargamos las imagenes del conjunto de Tracking
-TRACKING_DIR = './Tracking-Caida'
-
-def load_test_tracking():
-    test_tracking = []
-    for img in os.listdir(TRACKING_DIR):
-        label = label_img_tracking(img)
-        #Invocando el metodo que me dice en que orden lee las imagenes
-        #label1 = label_img_tracking_split_numero(img)
-        #print(label1)
-        path = os.path.join(TRACKING_DIR, img)
-        if "DS_Store" not in path:
-            img = Image.open(path)
-            img = img.convert('L')
-            img = img.resize((IMG_SIZE_Height, IMG_SIZE_Width), Image.ANTIALIAS)
-            test_tracking.append([np.array(img), label])
-            #print(np.array(img), label)
-            #print(test_tracking)
-    #Este shuffle() randomizaba el orden de los valores del array
-    #shuffle(test_tracking)
-    return test_tracking
-
-# Cargamos todas las imagenes del Tracking en el set de datos tracking_data
-tracking_data = load_test_tracking()
-
-# Cargamos todas las metricas resultantes del modelo
-trackingImages = np.array([i[0] for i in tracking_data]).reshape(-1, IMG_SIZE_Height, IMG_SIZE_Width, 1)
-trackingLabels = np.array([i[1] for i in tracking_data])
-print(trackingLabels)
-
-#Imprimo el valor shape que me indica que el dataset es una matriz de 4 dimensiones (cant imagenes,chanel,Height,Width)
-trackingImages.shape
-trackingLabels.shape
-
-#Realizamos un nuevo reshape para reducir a solo 2 dimensiones la matriz (cant imagenes,chanel * Height * Width)
-trackingImages = trackingImages.reshape(30,1*710*860)
-
-#Verificamos que el dataset de imagenes  sea de 2 dimensiones
-trackingImages.shape
-
-#Transformo los datos con el método MinMaxScaler() a una escala particular
-scaler = MinMaxScaler()
-X_tracking = scaler.fit_transform(trackingImages)
-
-#Inicializo las variables que guardarán los nombres de las clases
-y_tracking = trackingLabels
-
-#Verificamos que el dataset de imagenes  sea de 2 dimensiones
-X_tracking.shape
-
-#Verificamos que el dataset de labels  sea de 2 dimensiones
-y_tracking.shape
-
-#Imprimo y_tracking para verificar si esta ordenado
-print(y_tracking)
-
-#Convertimos los valores binarios de los labels de los nombres de las clases a numeros enteros para que funcione correctamente
-y_tracking = np.argmax(y_tracking, axis=1)
-print("Clase original del test en forma vectorial")
-print(y_tracking)
-
-#Predict the response for test dataset
-y_predTracking = clf.predict(X_tracking)
-
-# Model Accuracy: how often is the classifier correct?
-# 86% de accuracy
-print("Accuracy:",metrics.accuracy_score(y_tracking, y_predTracking) * 100)
-
-#Imprimiendo la matriz de confusión
-cm = confusion_matrix(y_tracking, y_predTracking)
-print(cm)
-
-
-# 0- Clase Vacio
-# 1- Clase Parado
-# 2- Clase Agachado
-# 3- Clase Caída
-
-#Variable que guarda el rango de valores
-rango = np.arange(30)
-
-#Inicializo los valores del data frame
-df = pd.DataFrame({ 'Orden': rango, 'Original': y_tracking, 'Predicción': y_predTracking})
-
-#Comienzo a dibujar las lineas
-ax = plt.gca()
-df.plot(kind='line',x='Orden',y='Original',ax=ax)
-df.plot(kind='line',x='Orden',y='Predicción', color='red', ax=ax)
-plt.xlabel('Clase Vacio: 0.0      Clase Parado: 1.0     Clase Agachado: 2.0     Clase Caída: 3.0',color='red')
-plt.show()
-
-'''
-

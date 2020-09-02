@@ -44,10 +44,10 @@ for k in range(len(arrayLabels)):
  print(k)
 
 #Muestro las primeras 4 columnas
-print(data[[' ','Agachado-100.png','Agachado-101.png','Agachado-102.png']])
+#print(data[[' ','Agachado-100.png','Agachado-101.png','Agachado-102.png']])
 print(data[:5])
-data.iloc[1, 1] = 93
-print(data.iloc[0:3, 0:3])
+#data.iloc[1, 1] = 93
+#print(data.iloc[0:3, 0:3])
 
 #Seleccionando el nombre de cada imagen para realizar la comparación
 def load_labels():
@@ -59,8 +59,9 @@ def load_labels():
             url2 = 'C:/Users/EGH/PycharmProjects/Ouch/train/' + img2
             percentage = image_diff_percent(url1,url2)
             data.loc[fila, [str(img2)]] = percentage
-            print('Imprimiendo coordenadas de fila: ' + str(fila) + '   columna: ' + str(img2) + '   porcentage de diferencia: ' + str(data.loc[fila, [str(img2)]]))
+            #print('Imprimiendo coordenadas de fila: ' + str(fila) + '   columna: ' + str(img2) + '   porcentage de diferencia: ' + str(data.loc[fila, [str(img2)]]))
         fila = fila + 1
+        print('Imprimiendo coordenadas de fila: ' + str(fila))
 
 #Invoco a la rutina load_labels()
 load_labels()
@@ -71,8 +72,8 @@ data.to_csv('df_porcent_diferent.csv')
 
 #Imprimo los primeros valore para comprobar si el data-set se lleno correctamente
 print(data.head())
-print(data.iloc[0:4, 0:4])
-print(data.loc[0:4, ['Agachado-2.png','CaidaTipoFin-0.png','Parado-0.png','Vacio-1.png']])
+#print(data.iloc[0:4, 0:4])
+#print(data.loc[0:4, ['Agachado-2.png','CaidaTipoFin-0.png','Parado-0.png','Vacio-1.png']])
 #print(data.iloc[1, 400])
 
 #Funcion que muestra todos los datos del dataframe que se le pase por parametros
