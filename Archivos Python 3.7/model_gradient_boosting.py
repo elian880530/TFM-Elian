@@ -9,6 +9,7 @@ from sklearn import metrics
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from sklearn.model_selection import cross_val_score
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -159,16 +160,8 @@ print(y_test)
 #Compute the accuracy scores on train and validation sets when training with different learning rates
 #learning_rates = [0.05, 0.1, 0.25, 0.5, 0.75, 1]
 
-#for learning_rate in learning_rates:
-    #gb = GradientBoostingClassifier(n_estimators=20, learning_rate = learning_rate, max_features=2, max_depth = 2, random_state = 0)
-    #gb.fit(X_train, y_train)
-    #print("Learning rate: ", learning_rate)
-    #print("Accuracy score (training): {0:.3f}".format(gb.score(X_train, y_train)))
-    #print("Accuracy score (validation): {0:.3f}".format(gb.score(X_test, y_test)))
-    #print()
+#Implementando la validación cruzada en los parámetros
 
-#Comentamos este bloque de instruccion pq ya sabemos los parametros adecuados con el cual obtenemos el mejor accuracy
-'''
 learning_rates= [0.001, 0.01, 0.05, 0.1, 0.75]
 n_estimators = [10, 20, 30, 50]
 max_features = [1, 2, 5]
@@ -178,19 +171,18 @@ for learning_rate in learning_rates:
 	for n_estimator in n_estimators:
 		for max_feature in max_features:
 			for max_depth in max_depths:
-				gb = GradientBoostingClassifier(n_estimators = n_estimator, learning_rate = learning_rate, max_features = max_feature, max_depth = max_depth, random_state = 0)
-				gb.fit(X_train, y_train)
+				gb_cv = GradientBoostingClassifier(n_estimators = n_estimator, learning_rate = learning_rate, max_features = max_feature, max_depth = max_depth, random_state = 0)
+				cv_scores = cross_val_score(gb_cv, X_train, y_train, cv=5)
 				print("--------------")
 				print("Learning rate:", learning_rate)
 				print("N Estimators:", n_estimator)
 				print("Max Feature:", max_feature)
 				print("Max Depth:", max_depth)
-				print("Accuracy score (training): {0:3f}".format(gb.score(X_train, y_train)))
-				print("Accuracy score (test): {0:3f}".format(gb.score(X_test, y_test)))
+				print("Accuracy score (CV): {0:3f}".format(np.mean(cv_scores)))
 				print("--------------")
 				print()
-'''
 
+# UNA VEZ QUE SABEMOS CUÁL ES EL QUE MAYOR VALOR DE ACCURACY HA DADO, YA SE PUEDE HACER EL FIT EN EL TRAIN SIN EL CV:
 #Mejores parametros obtenidos con 20000 imagenes de train:
 # --------------
 # Learning rate: 0.75

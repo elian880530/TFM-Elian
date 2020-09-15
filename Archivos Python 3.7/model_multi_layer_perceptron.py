@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
-
+import pickle
 #----------------------------------------------------------------------------------------------------------------------
 
 DIR = './train'
@@ -260,8 +260,6 @@ plt.show()
 # 3- Clase Caída
 
 #----------------------------------------------------------------------------------------------------------------------
-
-import pickle
 
 #En la siguiente línea configuro la carpeta y el nombre de como se guardara el modelo de las primeras 100 Epoch
 MODEL_DIR = './modelos/model-PCM'
