@@ -10,6 +10,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
 import pickle
+from sklearn.model_selection import cross_val_score
 #----------------------------------------------------------------------------------------------------------------------
 
 DIR = './train'
@@ -155,69 +156,47 @@ print(y_test)
 
 #----------------------------------------------------------------------------------------------------------------------
 
-#Construyendo el clasificador MLPClassifier
-#Pruebas con 400 imagenes
+#Implementando la validación cruzada
 
-#82.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#83% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=1000, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#84% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=10000, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+# LogisticRegression, evaluación del parámetro (max_iter=500):
 
 #74% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+#clf_cv = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #48% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(10,20,30), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+#clf_cv = MLPClassifier(hidden_layer_sizes=(10,20,30), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #71.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(500,500,500), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#72% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(25,50,100,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+#clf_cv = MLPClassifier(hidden_layer_sizes=(500,500,500), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #67.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(25,50,100,150,200,250), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+#clf_cv = MLPClassifier(hidden_layer_sizes=(25,50,100,150,200,250), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #69.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(250,200,150,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+#clf_cv = MLPClassifier(hidden_layer_sizes=(250,200,150,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #73% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(250,200,150,150,200,250), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+#clf_cv = MLPClassifier(hidden_layer_sizes=(250,200,150,150,200,250), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
+#72% accuracy
+#clf_cv = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=1000, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
+#85% accuracy
+clf_cv = MLPClassifier(hidden_layer_sizes=(25,50,100,100,50,25), max_iter=1000, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+
+# Entrenando el modelo
+cv_scores = cross_val_score(clf_cv, X_train, y_train, cv=5)
+print("Accuracy score (CV): {0:3f}".format(np.mean(cv_scores)))
+
+# UNA VEZ QUE SABEMOS CUÁL ES EL QUE MAYOR VALOR DE ACCURACY HA DADO, YA SE PUEDE HACER EL FIT EN EL TRAIN SIN EL CV:
 
 #----------------------------------------------------------------------------------------------------------------------
 
 #Construyendo el clasificador MLPClassifier
 #Pruebas con 20000 imagenes
 
-#74% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#48% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(10,20,30), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#71.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(500,500,500), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#72% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(25,50,100,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#67.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(25,50,100,150,200,250), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#69.5% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(250,200,150,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
-#73% accuracy
-#clf = MLPClassifier(hidden_layer_sizes=(250,200,150,150,200,250), max_iter=500, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
-
 #79% accuracy
-clf = MLPClassifier(hidden_layer_sizes=(100,100,100), max_iter=1000, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
+clf = MLPClassifier(hidden_layer_sizes=(25,50,100,100,50,25), max_iter=50, alpha=0.0001,solver='sgd', verbose=10,  random_state=21,tol=0.000000001)
 
 #Entrenando el modelo
 clf.fit(X_train, y_train)
@@ -226,17 +205,13 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
 #Imprimiendo el accuracy
-# 83.0% de accuracy
+# 79.0% de accuracy
 score = accuracy_score(y_test, y_pred)
 print(score * 100)
 
 #Imprimiendo la matriz de confusión
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
-
-#Imprimiendo la matriz de confusión en imagen
-#sns.heatmap(cm, center=True)
-#plt.show()
 
 #----------------------------------------------------------------------------------------------------------------------
 

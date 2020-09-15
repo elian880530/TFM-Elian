@@ -8,7 +8,7 @@ from sklearn import metrics
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
-
+from sklearn.model_selection import cross_val_score
 #----------------------------------------------------------------------------------------------------------------------
 
 DIR = './train'
@@ -152,6 +152,19 @@ print(y_train)
 y_test = np.argmax(y_test, axis=1)
 print("Clase original del test en forma vectorial")
 print(y_test)
+
+#----------------------------------------------------------------------------------------------------------------------
+
+#Implementando la validación cruzada
+
+# LogisticRegression, evaluación del parámetro (max_iter=500):
+clf_cv = LogisticRegression(max_iter=500)
+
+# Entrenando el modelo
+cv_scores = cross_val_score(clf_cv, x_train, y_train, cv=5)
+print("Accuracy score (CV): {0:3f}".format(np.mean(cv_scores)))
+
+# UNA VEZ QUE SABEMOS CUÁL ES EL QUE MAYOR VALOR DE ACCURACY HA DADO, YA SE PUEDE HACER EL FIT EN EL TRAIN SIN EL CV:
 
 #----------------------------------------------------------------------------------------------------------------------
 

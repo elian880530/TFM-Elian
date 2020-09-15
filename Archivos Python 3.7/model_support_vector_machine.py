@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+from sklearn.model_selection import cross_val_score
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -153,6 +153,18 @@ print(y_train)
 y_test = np.argmax(y_test, axis=1)
 print("Clase original del test en forma vectorial")
 print(y_test)
+
+#----------------------------------------------------------------------------------------------------------------------
+
+#Implementando la validación cruzada
+
+clf_cv = svm.SVC(kernel='linear')
+
+# Entrenando el modelo
+cv_scores = cross_val_score(clf_cv, X_train, y_train, cv=5)
+print("Accuracy score (CV): {0:3f}".format(np.mean(cv_scores)))
+
+# UNA VEZ QUE SABEMOS CUÁL ES EL QUE MAYOR VALOR DE ACCURACY HA DADO, YA SE PUEDE HACER EL FIT EN EL TRAIN SIN EL CV:
 
 #----------------------------------------------------------------------------------------------------------------------
 

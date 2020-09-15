@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from sklearn.model_selection import cross_val_score
 #----------------------------------------------------------------------------------------------------------------------
 
 DIR = './train'
@@ -129,23 +129,27 @@ X_test = sc.transform(testImages)
 y_train = trainLabels
 y_test = testLabels
 
+#----------------------------------------------------------------------------------------------------------------------
+
+#Implementando la validación cruzada
+
 #Declaramos los parametros del modelo
 #Probamos con diferentes estimadores n_estimators = [10, 20, 30, 40, 50]
-#Con n_estimators = 10 el accuracy = 82%
+#Con n_estimators = 10 el accuracy = 83.5%
 #Con n_estimators = 20 el accuracy = 75.5%
-#Con n_estimators = 30 el accuracy = 83.5%
+#Con n_estimators = 30 el accuracy = 81.5%
 #Con n_estimators = 40 el accuracy = 77%
 #Con n_estimators = 50 el accuracy = 79.5%
 
-#regressor = RandomForestRegressor(n_estimators=30, random_state=0)
+clf_cv = RandomForestRegressor(n_estimators=10, random_state=0)
 
-###########################################################################
-#Probamos con diferentes estimadores n_estimators = [10, 20, 30, 40, 50]
-#Con n_estimators = 10 el accuracy = %
-#Con n_estimators = 20 el accuracy = %
-#Con n_estimators = 30 el accuracy = %
-#Con n_estimators = 40 el accuracy = %
-#Con n_estimators = 50 el accuracy = %
+# Entrenando el modelo
+cv_scores = cross_val_score(clf_cv, X_train, y_train, cv=5)
+print("Accuracy score (CV): {0:3f}".format(np.mean(cv_scores)))
+
+# UNA VEZ QUE SABEMOS CUÁL ES EL QUE MAYOR VALOR DE ACCURACY HA DADO, YA SE PUEDE HACER EL FIT EN EL TRAIN SIN EL CV:
+
+#----------------------------------------------------------------------------------------------------------------------
 
 regressor = RandomForestRegressor(n_estimators=10, random_state=0)
 
